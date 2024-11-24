@@ -1,5 +1,5 @@
 console.log("This is auth module");
-
+console.time("time");
 const wait = (time) =>
 	new Promise((resolve, reject) => {
 		setTimeout(() => {
@@ -7,4 +7,5 @@ const wait = (time) =>
 		}, time);
 	});
 
-wait(2000).then((res) => console.log(res));
+wait(5000).then((res) => console.log(res));
+console.log("after 2 sec waiting fn");
