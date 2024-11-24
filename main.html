@@ -8,5 +8,75 @@
 	</head>
 	<body>
 		<h2>This is Git with Github html</h2>
+		<p>
+			<h4>How does <strong>Branch</strong> work in Git</h4>
+			1. **Branch Structure:**
+    - Git-এর ব্রাঞ্চগুলো **parallel structure**এ থাকে, কোনো **tree-like hierarchy** নয়।
+    - প্রতিটি ব্রাঞ্চ স্বাধীন এবং স্বতন্ত্রভাবে কাজ করতে পারে।
+2. **master এবং অন্যান্য ব্রাঞ্চ:**
+    - `master` হলো ডিফল্ট ব্রাঞ্চ এবং এটি নিজস্ব commit history ধরে রাখে।
+    - অন্য কোনো ব্রাঞ্চ (যেমন, `feature`) তৈরি হলে সেটি `master`এর নির্দিষ্ট commit থেকে শাখা নেয় কিন্তু এরপরে নিজের history বজায় রাখে।
+3. **Commit Relationship:**
+    - **প্রতিটি ব্রাঞ্চ** একটি নির্দিষ্ট commit থেকে শুরু হয়।
+    - সব ব্রাঞ্চের মধ্যে **parallel relationship** থাকে, **parent-child** বা **nested relationship** নয়।
+4. **HEAD এবং Reference:**
+    - `HEAD` নির্দেশ করে কোন ব্রাঞ্চে বর্তমানে কাজ চলছে।
+    - ব্রাঞ্চগুলো নির্দিষ্ট commits-কে reference ধরে রাখে।
+    
+    ### Branch Inheritance
+    
+    ### নতুন ব্রাঞ্চ তৈরি করার সময় কি হয়?
+    
+    যখন Git-এ নতুন একটি ব্রাঞ্চ তৈরি করা হয়, এটি **master** (বা যেই ব্রাঞ্চ থেকে তৈরি করা হচ্ছে) এর **content inherit করে**, কিন্তু সেটা **clone করে না**।
+    
+    ---
+    
+    **কি ঘটে ব্রাঞ্চ তৈরি হলে :**
+    
+    1. **Commit Pointer Copy হয়:**
+        - নতুন ব্রাঞ্চ **মূল** ব্রাঞ্চের **শেষ কমিটের pointer** কে inherit করে।
+        - অর্থাৎ, নতুন ব্রাঞ্চটি সেই অবস্থান থেকে কাজ শুরু করে যেখানে মূল ব্রাঞ্চটি ছিল।
+    2. **ফাইলের আসল কপি হয় না:**
+        - Git একটি **snapshot-based VCS**, তাই ফাইলের **content** একাধিকবার কপি হয় না।
+        - Commit-এর hash ও ডেটা shared থাকে।
+    3. **কাজ শুরু করার জন্য আলাদা context:**
+        - নতুন ব্রাঞ্চে কাজ করার সময়, যেকোনো পরিবর্তন শুধুমাত্র সেই ব্রাঞ্চে হবে। মূল ব্রাঞ্চ অক্ষত থাকবে।
+    
+    ---
+    
+    **হ্যাঁ**, Git-এ যেকোনো ব্রাঞ্চ অন্য যেকোনো ব্রাঞ্চে **merge** করা যায়।
+    
+    ### **Git Merge এর মূল ধারণা:**
+    
+    1. **Source Branch (যেখান থেকে পরিবর্তন আসবে):**
+        
+        যে ব্রাঞ্চের পরিবর্তনগুলো merge করতে চাও।
+        
+    2. **Target Branch (যেখানে পরিবর্তন যোগ হবে):**
+        
+        যে ব্রাঞ্চে পরিবর্তনগুলো মিশ্রিত হবে।
+        
+    
+    ### **Multiple Branch Merge:**
+    
+    1. `feature-1` এবং `feature-2` ব্রাঞ্চ আছে।
+    2. `development` ব্রাঞ্চে কাজ merge করতে হবে।
+    
+    ```bash
+    # Merge feature-1 to development
+    git checkout development
+    git merge feature-1
+    
+    # Merge feature-2 to development
+    git merge feature-2
+    
+    ```
+    
+    ---
+    
+    Git-এ ব্রাঞ্চের মধ্যে সম্পর্ক sibling বা parent-child নয়।
+    
+    তাই যেকোনো দুটি ব্রাঞ্চ merge করা সম্ভব। Target এবং Source শুধু merge command দিয়ে নির্ধারিত হয়।
+		</p>
 	</body>
 </html>
