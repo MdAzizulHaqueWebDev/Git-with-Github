@@ -9,3 +9,4 @@ const wait = (time) =>
 
 wait(5000).then((res) => console.log(res));
 console.log("after 2 sec waiting fn");
+console.log("bug 🐛 fixed in console")
